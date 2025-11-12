@@ -1,0 +1,10 @@
+{
+  "rules": {
+    "$coupleId": {
+      "blessings": {
+        ".read": true,
+        ".write": true
+      }
+    }
+  }
+}
