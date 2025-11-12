@@ -112,6 +112,10 @@ const db = new BlessingDatabase();
 // Create stars
 function createStars() {
     const starsContainer = document.getElementById('stars');
+    if (!starsContainer) {
+        console.error('Stars container not found');
+        return;
+    }
     for (let i = 0; i < 100; i++) {
         const star = document.createElement('div');
         star.className = 'star';
