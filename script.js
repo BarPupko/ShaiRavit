@@ -3,22 +3,45 @@ let database = null;
 let blessingsRef = null;
 let firebaseInitialized = false;
 
-try {
-    firebase.initializeApp(firebaseConfig);
-    database = firebase.database();
-    blessingsRef = database.ref('ShaiRevital/blessings');
-    firebaseInitialized = true;
-    console.log('Firebase initialized successfully');
-} catch (error) {
-    console.error('Firebase initialization failed:', error);
-    console.log('Site will continue to work without real-time blessings');
+function initializeFirebase() {
+    try {
+        if (typeof firebase === 'undefined') {
+            console.error('Firebase SDK not loaded');
+            return;
+        }
+
+        if (typeof firebaseConfig === 'undefined') {
+            console.error('Firebase config not found');
+            return;
+        }
+
+        firebase.initializeApp(firebaseConfig);
+        database = firebase.database();
+        blessingsRef = database.ref('ShaiRevital/blessings');
+        firebaseInitialized = true;
+        console.log('Firebase initialized successfully');
+
+        // Initialize the database after Firebase is ready
+        if (typeof db !== 'undefined') {
+            db.loadBlessings();
+        }
+    } catch (error) {
+        console.error('Firebase initialization failed:', error);
+        console.log('Site will continue to work without real-time blessings');
+    }
 }
+
+// Try to initialize Firebase immediately
+initializeFirebase();
 
 // Blessing Database class with Firebase integration
 class BlessingDatabase {
     constructor() {
         this.blessings = [];
-        this.loadBlessings();
+        // Don't load immediately, wait for Firebase to initialize
+        if (firebaseInitialized) {
+            this.loadBlessings();
+        }
     }
 
     loadBlessings() {

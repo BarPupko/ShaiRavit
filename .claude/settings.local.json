@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git checkout:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nAdd Firebase integration and improve site architecture\n\nMajor Changes:\n- Separate Firebase configuration into firebase-config.js for security\n- Integrate Firebase Realtime Database for wedding blessings\n- Store blessings under ShaiRevital/ path for multi-couple support\n- Add comprehensive error handling for Firebase initialization\n- Ensure countdown timer works independently of Firebase status\n\nNew Features:\n- Real-time blessing synchronization across all clients\n- Floating blessing notes animation from Firebase data\n- Blessing counter showing total submissions\n- WhatsApp direct links for contact information\n- Updated wedding details (Revital & Shai, Oct 28 2026)\n\nTechnical Improvements:\n- Enhanced script.js with try-catch error handling\n- Graceful degradation when Firebase is unavailable\n- Updated .gitignore to protect sensitive credentials\n- Better code organization and separation of concerns\n\nDocumentation:\n- FINAL_SETUP_CHECKLIST.md - Complete setup guide\n- FIREBASE_SETUP_GUIDE.md - Detailed Firebase configuration\n- firebase-rules.json - Database security rules template\n- test.html - Firebase connection diagnostic tool\n\n🤖 Generated with Claude Code (https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push:*)",
+      "Bash(gh pr create:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

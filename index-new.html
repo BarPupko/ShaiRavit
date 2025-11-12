@@ -181,9 +181,25 @@
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
     <!-- Firebase Configuration -->
+    <script>
+        // Wait for Firebase to load before loading config
+        if (typeof firebase === 'undefined') {
+            console.error('Firebase SDK failed to load');
+        }
+    </script>
     <script src="firebase-config.js"></script>
 
     <!-- Custom JavaScript -->
     <script src="script.js"></script>
+
+    <script>
+        // Ensure Firebase is initialized after everything loads
+        window.addEventListener('load', function() {
+            if (!firebaseInitialized && typeof initializeFirebase === 'function') {
+                console.log('Retrying Firebase initialization...');
+                initializeFirebase();
+            }
+        });
+    </script>
 </body>
 </html>
