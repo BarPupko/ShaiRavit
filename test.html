@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Connection Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-box {
+            background: white;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid #ddd;
+        }
+        .success {
+            border-left-color: #4caf50;
+            background: #f1f8f4;
+        }
+        .error {
+            border-left-color: #f44336;
+            background: #fef1f0;
+        }
+        .info {
+            border-left-color: #2196f3;
+            background: #f0f7ff;
+        }
+        h1 { color: #333; }
+        h2 { color: #666; font-size: 18px; }
+        pre {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        button {
+            background: #2196f3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #1976d2;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔥 Firebase Connection Test</h1>
+
+    <div id="results"></div>
+
+    <div class="test-box info">
+        <h2>Manual Tests</h2>
+        <button onclick="testCountdown()">Test Countdown Timer</button>
+        <button onclick="testFirebase()">Test Firebase Connection</button>
+        <div id="manualResults"></div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+    <!-- Firebase Configuration -->
+    <script src="firebase-config.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+
+    <script>
+        const resultsDiv = document.getElementById('results');
+        const manualDiv = document.getElementById('manualResults');
+
+        function addResult(title, message, isSuccess) {
+            const className = isSuccess ? 'success' : 'error';
+            const icon = isSuccess ? '✅' : '❌';
+            resultsDiv.innerHTML += `
+                <div class="test-box ${className}">
+                    <h2>${icon} ${title}</h2>
+                    <p>${message}</p>
+                </div>
+            `;
+        }
+
+        function addInfo(title, message) {
+            resultsDiv.innerHTML += `
+                <div class="test-box info">
+                    <h2>ℹ️ ${title}</h2>
+                    <p>${message}</p>
+                </div>
+            `;
+        }
+
+        // Run tests automatically
+        setTimeout(() => {
+            // Test 1: Check if Firebase config exists
+            try {
+                if (typeof firebaseConfig !== 'undefined') {
+                    addResult('Firebase Config Found', 'firebase-config.js is loaded', true);
+
+                    // Show config details
+                    const configDetails = `
+                        <strong>Project ID:</strong> ${firebaseConfig.projectId}<br>
+                        <strong>App ID:</strong> ${firebaseConfig.appId}<br>
+                        <strong>Database URL:</strong> ${firebaseConfig.databaseURL}
+                    `;
+                    addInfo('Firebase Configuration', configDetails);
+
+                    // Check if appId is placeholder
+                    if (firebaseConfig.appId.includes('placeholder')) {
+                        addResult('App ID Issue', 'The appId is set to "placeholder". You need to get the real Web App ID from Firebase Console. See FIREBASE_SETUP_GUIDE.md', false);
+                    } else {
+                        addResult('App ID Valid', 'App ID looks correct', true);
+                    }
+                } else {
+                    addResult('Firebase Config Missing', 'firebase-config.js not loaded or firebaseConfig not defined', false);
+                }
+            } catch (error) {
+                addResult('Firebase Config Error', error.message, false);
+            }
+
+            // Test 2: Check if Firebase is initialized
+            try {
+                if (typeof firebaseInitialized !== 'undefined' && firebaseInitialized) {
+                    addResult('Firebase Initialized', 'Firebase connection established successfully', true);
+                } else {
+                    addResult('Firebase Not Initialized', 'Firebase failed to initialize. Check browser console for errors.', false);
+                }
+            } catch (error) {
+                addResult('Firebase Initialization Error', error.message, false);
+            }
+
+            // Test 3: Check if database is available
+            try {
+                if (typeof database !== 'undefined' && database !== null) {
+                    addResult('Database Connection', 'Firebase Realtime Database is connected', true);
+                } else {
+                    addResult('Database Connection', 'Database is not available', false);
+                }
+            } catch (error) {
+                addResult('Database Error', error.message, false);
+            }
+
+            // Test 4: Check countdown function
+            try {
+                if (typeof updateCountdown === 'function') {
+                    addResult('Countdown Function', 'Countdown timer function is loaded', true);
+                } else {
+                    addResult('Countdown Function', 'Countdown function not found', false);
+                }
+            } catch (error) {
+                addResult('Countdown Error', error.message, false);
+            }
+
+            // Test 5: Check blessing database
+            try {
+                if (typeof db !== 'undefined' && db !== null) {
+                    const count = db.getCount();
+                    addResult('Blessing Database', `Database initialized with ${count} blessings`, true);
+                } else {
+                    addResult('Blessing Database', 'Blessing database not initialized', false);
+                }
+            } catch (error) {
+                addResult('Blessing Database Error', error.message, false);
+            }
+        }, 500);
+
+        function testCountdown() {
+            const weddingDate = new Date('2026-10-28T19:00:00');
+            const now = new Date();
+            const days = Math.floor((weddingDate - now) / (1000 * 60 * 60 * 24));
+
+            manualDiv.innerHTML = `
+                <div style="margin-top: 15px; padding: 15px; background: #f0f7ff; border-radius: 4px;">
+                    <strong>Countdown Test Result:</strong><br>
+                    Wedding Date: October 28, 2026 at 7:00 PM<br>
+                    Days Until Wedding: <strong>${days}</strong> days<br>
+                    Status: ${days > 0 ? '✅ Countdown is working!' : '❌ Date has passed'}
+                </div>
+            `;
+        }
+
+        function testFirebase() {
+            manualDiv.innerHTML = '<div style="margin-top: 15px;">Testing Firebase connection...</div>';
+
+            if (!firebaseInitialized) {
+                manualDiv.innerHTML = `
+                    <div style="margin-top: 15px; padding: 15px; background: #fef1f0; border-radius: 4px;">
+                        <strong>❌ Firebase Not Connected</strong><br>
+                        Check the Firebase Setup Guide (FIREBASE_SETUP_GUIDE.md) to fix this.
+                    </div>
+                `;
+                return;
+            }
+
+            try {
+                const testRef = database.ref('ShaiRevital/blessings');
+                testRef.once('value')
+                    .then((snapshot) => {
+                        const data = snapshot.val();
+                        const count = data ? Object.keys(data).length : 0;
+
+                        manualDiv.innerHTML = `
+                            <div style="margin-top: 15px; padding: 15px; background: #f1f8f4; border-radius: 4px;">
+                                <strong>✅ Firebase Connection Successful!</strong><br>
+                                Connected to: ShaiRevital/blessings<br>
+                                Current Blessings: <strong>${count}</strong><br>
+                                You can now submit and view blessings!
+                            </div>
+                        `;
+                    })
+                    .catch((error) => {
+                        manualDiv.innerHTML = `
+                            <div style="margin-top: 15px; padding: 15px; background: #fef1f0; border-radius: 4px;">
+                                <strong>❌ Firebase Error</strong><br>
+                                ${error.message}<br>
+                                <small>Check your database rules in Firebase Console</small>
+                            </div>
+                        `;
+                    });
+            } catch (error) {
+                manualDiv.innerHTML = `
+                    <div style="margin-top: 15px; padding: 15px; background: #fef1f0; border-radius: 4px;">
+                        <strong>❌ Test Failed</strong><br>
+                        ${error.message}
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

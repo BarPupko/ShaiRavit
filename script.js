@@ -1,7 +1,18 @@
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-const database = firebase.database();
-const blessingsRef = database.ref('ShaiRevital/blessings');
+let database = null;
+let blessingsRef = null;
+let firebaseInitialized = false;
+
+try {
+    firebase.initializeApp(firebaseConfig);
+    database = firebase.database();
+    blessingsRef = database.ref('ShaiRevital/blessings');
+    firebaseInitialized = true;
+    console.log('Firebase initialized successfully');
+} catch (error) {
+    console.error('Firebase initialization failed:', error);
+    console.log('Site will continue to work without real-time blessings');
+}
 
 // Blessing Database class with Firebase integration
 class BlessingDatabase {
@@ -11,35 +22,54 @@ class BlessingDatabase {
     }
 
     loadBlessings() {
+        if (!firebaseInitialized || !blessingsRef) {
+            console.log('Firebase not available, using empty blessings list');
+            return;
+        }
+
         // Listen for real-time updates from Firebase
-        blessingsRef.on('value', (snapshot) => {
-            const data = snapshot.val();
-            if (data) {
-                this.blessings = Object.keys(data).map(key => ({
-                    id: key,
-                    ...data[key]
-                }));
-            } else {
-                this.blessings = [];
-            }
-            // Update the display whenever data changes
-            displayBlessings();
-        });
+        try {
+            blessingsRef.on('value', (snapshot) => {
+                const data = snapshot.val();
+                if (data) {
+                    this.blessings = Object.keys(data).map(key => ({
+                        id: key,
+                        ...data[key]
+                    }));
+                } else {
+                    this.blessings = [];
+                }
+                // Update the display whenever data changes
+                displayBlessings();
+            });
+        } catch (error) {
+            console.error('Error loading blessings:', error);
+        }
     }
 
     addBlessing(name, text) {
+        if (!firebaseInitialized || !blessingsRef) {
+            alert('מערכת הברכות אינה זמינה כרגע. אנא נסו שוב מאוחר יותר.');
+            return this.blessings.length;
+        }
+
         // Add to Firebase
-        const newBlessingRef = blessingsRef.push();
-        newBlessingRef.set({
-            name: name,
-            text: text,
-            timestamp: Date.now()
-        }).then(() => {
-            console.log('Blessing saved successfully!');
-        }).catch((error) => {
-            console.error('Error saving blessing:', error);
+        try {
+            const newBlessingRef = blessingsRef.push();
+            newBlessingRef.set({
+                name: name,
+                text: text,
+                timestamp: Date.now()
+            }).then(() => {
+                console.log('Blessing saved successfully!');
+            }).catch((error) => {
+                console.error('Error saving blessing:', error);
+                alert('שגיאה בשמירת הברכה. אנא נסו שוב.');
+            });
+        } catch (error) {
+            console.error('Error adding blessing:', error);
             alert('שגיאה בשמירת הברכה. אנא נסו שוב.');
-        });
+        }
 
         return this.blessings.length;
     }
