@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>כרמית ❤️ כהן - החתונה שלנו</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&family=Assistant:wght@300;400;600;700&family=Amatic+SC:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Assistant', 'Heebo', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        /* Floating Blessing Notes */
+        .blessings-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+            overflow: hidden;
+        }
+        
+        .blessing-note {
+            position: absolute;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 15px 20px;
+            max-width: 200px;
+            opacity: 0.5;
+            font-family: 'Amatic SC', cursive;
+            font-size: 18px;
+            color: #ffffff;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            animation: floatNote 20s infinite ease-in-out;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            line-height: 1.4;
+        }
+        
+        .blessing-note::before {
+            content: '💝';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 24px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+        
+        @keyframes floatNote {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(20px, -30px) rotate(5deg);
+            }
+            50% {
+                transform: translate(-20px, -60px) rotate(-5deg);
+            }
+            75% {
+                transform: translate(15px, -40px) rotate(3deg);
+            }
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 3;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .logo-frame {
+            width: 320px;
+            height: 320px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .logo-content {
+            text-align: center;
+            color: #2c3e50;
+            padding: 40px;
+        }
+        
+        .initials {
+            font-size: 48px;
+            font-weight: 300;
+            color: #d4af37;
+            margin-bottom: 10px;
+            font-family: 'Heebo', serif;
+        }
+        
+        .names {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+        
+        .bar-popko {
+            font-size: 20px;
+            font-weight: 500;
+            color: #555;
+            margin-bottom: 15px;
+        }
+        
+        .date {
+            font-size: 24px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .decorative-element {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 80px;
+        }
+        
+        .leaf {
+            position: absolute;
+            width: 60px;
+            height: 30px;
+            background: linear-gradient(135deg, #e8c99c 0%, #d4a373 100%);
+            border-radius: 0 50% 50% 0;
+            opacity: 0.9;
+        }
+        
+        .leaf:nth-child(1) {
+            left: 0;
+            transform: rotate(-30deg);
+        }
+        
+        .leaf:nth-child(2) {
+            left: 40px;
+            transform: rotate(-15deg);
+        }
+        
+        .leaf:nth-child(3) {
+            right: 40px;
+            transform: rotate(15deg) scaleX(-1);
+        }
+        
+        .leaf:nth-child(4) {
+            right: 0;
+            transform: rotate(30deg) scaleX(-1);
+        }
+        
+        .fern {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 50px;
+            background: linear-gradient(180deg, #a8c99c 0%, #7ba372 100%);
+            clip-path: polygon(50% 0%, 60% 20%, 70% 20%, 55% 40%, 65% 40%, 50% 60%, 35% 40%, 45% 40%, 30% 20%, 40% 20%);
+            opacity: 0.8;
+        }
+        
+        .countdown {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .countdown h2 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #ffd700;
+            font-weight: 600;
+        }
+        
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .time-unit {
+            text-align: center;
+            min-width: 70px;
+        }
+        
+        .time-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: #ffffff;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+        
+        .time-label {
+            font-size: 14px;
+            color: #b8b8b8;
+            margin-top: 5px;
+        }
+        
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 30px;
+            animation: fadeIn 1s ease-out 0.6s both;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #7d6f3a 0%, #5a5228 100%);
+            color: #ffffff;
+            border: none;
+            padding: 18px 30px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Assistant', sans-serif;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .btn:active {
+            transform: translateY(-1px);
+        }
+        
+        .btn span {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #7d6f3a 0%, #5a5228 100%);
+        }
+        
+        .btn-blessing {
+            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+            font-size: 20px;
+            padding: 20px 30px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #6b5d34 0%, #4a4123 100%);
+        }
+        
+        .btn-gift {
+            background: linear-gradient(135deg, #8b7840 0%, #6d5f2e 100%);
+        }
+        
+        .btn-photo {
+            background: linear-gradient(135deg, #75693a 0%, #5a5028 100%);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            font-size: 14px;
+            color: #89b3ff;
+            animation: fadeIn 1s ease-out 0.9s both;
+        }
+        
+        .footer a {
+            color: #89b3ff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        .footer a:hover {
+            color: #ffffff;
+        }
+        
+        @media (max-width: 480px) {
+            .logo-frame {
+                width: 280px;
+                height: 280px;
+            }
+            
+            .names {
+                font-size: 24px;
+            }
+            
+            .initials {
+                font-size: 40px;
+            }
+            
+            .btn {
+                font-size: 16px;
+                padding: 16px 25px;
+            }
+            
+            .time-value {
+                font-size: 30px;
+            }
+            
+            .blessing-note {
+                max-width: 150px;
+                font-size: 16px;
+                padding: 12px 15px;
+            }
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            animation: slideUp 0.3s ease-out;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .close {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 30px;
+            color: #fff;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+        
+        .modal h2 {
+            color: #ffd700;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        
+        .modal p {
+            color: #ffffff;
+            line-height: 1.8;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        
+        .modal-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+        
+        /* Blessing Form Styles */
+        .blessing-form {
+            margin-top: 25px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #ffd700;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            border-radius: 10px;
+            font-family: 'Assistant', sans-serif;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            text-align: right;
+            direction: rtl;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ffd700;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+            font-family: 'Amatic SC', cursive;
+            font-size: 20px;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+            color: #ffffff;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Assistant', sans-serif;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+        }
+        
+        .success-message {
+            background: rgba(76, 175, 80, 0.2);
+            border: 2px solid #4caf50;
+            color: #4caf50;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .blessing-stats {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #b8b8b8;
+        }
+        
+        .blessing-stats strong {
+            color: #ffd700;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="blessings-container" id="blessingsContainer"></div>
+    
+    <div class="container">
+        <div class="header">
+            <div class="logo-frame">
+                <div class="logo-content">
+                    <div class="initials">K & C</div>
+                    <div class="names">כרמית ❤️ כהן</div>
+                    <div class="bar-popko">בר פופקו</div>
+                    <div class="date">30.10.2022</div>
+                </div>
+                <div class="decorative-element">
+                    <div class="leaf"></div>
+                    <div class="leaf"></div>
+                    <div class="leaf"></div>
+                    <div class="leaf"></div>
+                    <div class="fern"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="countdown">
+            <h2>⏰ הזמן עובר מהר!</h2>
+            <div class="countdown-timer" id="countdown">
+                <div class="time-unit">
+                    <div class="time-value" id="days">00</div>
+                    <div class="time-label">ימים</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value" id="hours">00</div>
+                    <div class="time-label">שעות</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value" id="minutes">00</div>
+                    <div class="time-label">דקות</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value" id="seconds">00</div>
+                    <div class="time-label">שניות</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="button-group">
+            <button class="btn btn-blessing" onclick="openModal('blessing')">
+                <span>💝 שלחו לנו ברכה ומשאלת לב</span>
+            </button>
+            
+            <button class="btn btn-primary" onclick="openModal('rsvp')">
+                <span>💌 אישור הגעה</span>
+            </button>
+            
+            <button class="btn btn-secondary" onclick="openModal('gift')">
+                <span>🎁 מתנה באמצעות PAYBOX</span>
+            </button>
+            
+            <button class="btn btn-gift" onclick="openModal('location')">
+                <span>📍 מיקום האירוע</span>
+            </button>
+            
+            <button class="btn btn-photo" onclick="openModal('photos')">
+                <span>📸 העלאת תמונה או סרטון</span>
+            </button>
+        </div>
+        
+        <div class="footer">
+            <p>💝 מחכים לחגוג איתכם את היום המיוחד 💝</p>
+            <p><a href="#" onclick="openModal('contact')">צרו קשר</a></p>
+        </div>
+    </div>
+    
+    <!-- Blessing Modal -->
+    <div id="blessingModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('blessing')">&times;</span>
+            <div class="modal-icon">💝</div>
+            <h2>שלחו לנו ברכה ומשאלת לב</h2>
+            <p>אנחנו נשמח לקרוא את הברכות והמשאלות שלכם!</p>
+            
+            <form class="blessing-form" onsubmit="submitBlessing(event)">
+                <div class="form-group">
+                    <label for="name">שם מלא:</label>
+                    <input type="text" id="name" name="name" required placeholder="הכניסו את שמכם">
+                </div>
+                
+                <div class="form-group">
+                    <label for="blessing">ברכה / משאלת לב:</label>
+                    <textarea id="blessing" name="blessing" required placeholder="כתבו לנו ברכה חמה מהלב... ❤️"></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">📨 שלח ברכה</button>
+            </form>
+            
+            <div class="success-message" id="successMessage">
+                ✅ הברכה נשלחה בהצלחה! תודה רבה! 💝
+            </div>
+            
+            <div class="blessing-stats">
+                <p>עד כה התקבלו:</p>
+                <p><strong id="blessingsCount">0</strong> ברכות חמות 🎉</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Other Modals -->
+    <div id="rsvpModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('rsvp')">&times;</span>
+            <div class="modal-icon">💌</div>
+            <h2>אישור הגעה</h2>
+            <p>נשמח לראות אתכם ביום המיוחד שלנו!</p>
+            <p>אנא אשרו הגעתכם דרך הטלפון:<br><strong>050-1234567</strong></p>
+            <p>או במייל:<br><strong>wedding@example.com</strong></p>
+        </div>
+    </div>
+    
+    <div id="giftModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('gift')">&times;</span>
+            <div class="modal-icon">🎁</div>
+            <h2>מתנה כספית</h2>
+            <p>אם תרצו לחלוק בשמחתנו במתנה כספית,</p>
+            <p>ניתן להעביר באמצעות PAYBOX:</p>
+            <p><strong>קישור: paybox.co.il/wedding</strong></p>
+            <p>או לחשבון הבנק:<br>בנק: 12 סניף: 345 חשבון: 678901</p>
+        </div>
+    </div>
+    
+    <div id="locationModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('location')">&times;</span>
+            <div class="modal-icon">📍</div>
+            <h2>מיקום האירוע</h2>
+            <p><strong>אולם אירועים "בר פופקו"</strong></p>
+            <p>רחוב הגפן 123, תל אביב</p>
+            <p>יום ראשון, 30 באוקטובר 2022</p>
+            <p>שעה: 19:00</p>
+            <p><a href="https://waze.com/ul" target="_blank" style="color: #ffd700;">פתח ב-Waze</a> | <a href="https://maps.google.com" target="_blank" style="color: #ffd700;">פתח ב-Google Maps</a></p>
+        </div>
+    </div>
+    
+    <div id="photosModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('photos')">&times;</span>
+            <div class="modal-icon">📸</div>
+            <h2>העלאת תמונות וסרטונים</h2>
+            <p>שתפו אותנו ברגעים המיוחדים!</p>
+            <p>העלו תמונות וסרטונים מהאירוע:</p>
+            <p><strong>WhatsApp: 050-1234567</strong></p>
+            <p>או במייל:<br><strong>photos@wedding.com</strong></p>
+            <p>תודה שאתם חלק מהשמחה! 💝</p>
+        </div>
+    </div>
+    
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('contact')">&times;</span>
+            <div class="modal-icon">💬</div>
+            <h2>יצירת קשר</h2>
+            <p>נשמח לענות על כל שאלה!</p>
+            <p><strong>כרמית:</strong> 050-1111111</p>
+            <p><strong>כהן:</strong> 050-2222222</p>
+            <p>או במייל:<br><strong>contact@wedding.com</strong></p>
+        </div>
+    </div>
+    
+    <script>
+        // "Database" simulation using localStorage
+        class BlessingDatabase {
+            constructor() {
+                this.storageKey = 'weddingBlessings';
+                this.loadBlessings();
+            }
+            
+            loadBlessings() {
+                const stored = localStorage.getItem(this.storageKey);
+                this.blessings = stored ? JSON.parse(stored) : this.getInitialBlessings();
+                this.save();
+            }
+            
+            getInitialBlessings() {
+                return [
+                    { name: 'דני ורונית', text: 'מזל טוב! שתזכו לבנות בית נאמן בישראל ❤️', timestamp: Date.now() - 86400000 },
+                    { name: 'משפחת כהן', text: 'שתהיו מאושרים לנצח! אוהבים אתכם 💕', timestamp: Date.now() - 172800000 },
+                    { name: 'יעל ואבי', text: 'חיים של אהבה ושמחה! מזל טוב לזוג המתוק 🎊', timestamp: Date.now() - 259200000 },
+                    { name: 'משפחת לוי', text: 'שתזכו לשנים רבות של אושר! 🌟', timestamp: Date.now() - 345600000 },
+                    { name: 'טל ומיכל', text: 'מזל טוב! אתם מושלמים ביחד 💝', timestamp: Date.now() - 432000000 }
+                ];
+            }
+            
+            save() {
+                localStorage.setItem(this.storageKey, JSON.stringify(this.blessings));
+            }
+            
+            addBlessing(name, text) {
+                this.blessings.push({
+                    name: name,
+                    text: text,
+                    timestamp: Date.now()
+                });
+                this.save();
+                return this.blessings.length;
+            }
+            
+            getAllBlessings() {
+                return this.blessings;
+            }
+            
+            getCount() {
+                return this.blessings.length;
+            }
+        }
+        
+        // Initialize database
+        const db = new BlessingDatabase();
+        
+        // Create stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        // Create floating blessing notes
+        function createBlessingNote(blessing, index) {
+            const note = document.createElement('div');
+            note.className = 'blessing-note';
+            note.innerHTML = `<strong>${blessing.name}</strong><br>${blessing.text}`;
+            
+            // Random position
+            const randomX = Math.random() * 80 + 10; // 10-90%
+            const randomY = Math.random() * 80 + 10; // 10-90%
+            note.style.left = randomX + '%';
+            note.style.top = randomY + '%';
+            
+            // Random animation delay and duration
+            note.style.animationDelay = (index * 2) + 's';
+            note.style.animationDuration = (15 + Math.random() * 10) + 's';
+            
+            return note;
+        }
+        
+        function displayBlessings() {
+            const container = document.getElementById('blessingsContainer');
+            container.innerHTML = '';
+            
+            const blessings = db.getAllBlessings();
+            blessings.forEach((blessing, index) => {
+                const note = createBlessingNote(blessing, index);
+                container.appendChild(note);
+            });
+            
+            // Update counter
+            document.getElementById('blessingsCount').textContent = blessings.length;
+        }
+        
+        // Submit blessing form
+        function submitBlessing(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const blessing = document.getElementById('blessing').value;
+            
+            // Add to "database"
+            const count = db.addBlessing(name, blessing);
+            
+            // Show success message
+            const successMsg = document.getElementById('successMessage');
+            successMsg.style.display = 'block';
+            
+            // Clear form
+            document.getElementById('name').value = '';
+            document.getElementById('blessing').value = '';
+            
+            // Update blessings display
+            displayBlessings();
+            
+            // Hide success message after 3 seconds
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+            }, 3000);
+            
+            // Close modal after 4 seconds
+            setTimeout(() => {
+                closeModal('blessing');
+            }, 4000);
+        }
+        
+        // Countdown timer
+        function updateCountdown() {
+            const weddingDate = new Date('2022-10-30T19:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+            
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = '<h2>🎉 היום הגדול הגיע! 🎉</h2>';
+                return;
+            }
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        // Modal functions
+        function openModal(type) {
+            const modal = document.getElementById(type + 'Modal');
+            if (modal) {
+                modal.style.display = 'flex';
+            }
+        }
+        
+        function closeModal(type) {
+            const modal = document.getElementById(type + 'Modal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+        
+        // Initialize
+        createStars();
+        displayBlessings();
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
