@@ -179,33 +179,95 @@ body {
     height: 80px;
 }
 
-.leaf {
+.olive-branch {
+    position: relative;
+    width: 200px;
+    height: 80px;
+}
+
+.branch-stem {
     position: absolute;
-    width: 60px;
-    height: 30px;
-    background: linear-gradient(135deg, #e8c99c 0%, #d4a373 100%);
-    border-radius: 0 50% 50% 0;
+    width: 3px;
+    height: 70px;
+    background: linear-gradient(180deg, #8b7355 0%, #6b5847 100%);
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.olive-leaf {
+    position: absolute;
+    width: 35px;
+    height: 12px;
+    background: linear-gradient(135deg, #a8c99c 0%, #7ba372 100%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
     opacity: 0.9;
 }
 
-.leaf:nth-child(1) {
-    left: 0;
-    transform: rotate(-30deg);
+.olive-leaf::before {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    background: rgba(123, 163, 114, 0.6);
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
 }
 
-.leaf:nth-child(2) {
+.olive-leaf:nth-child(2) {
     left: 40px;
-    transform: rotate(-15deg);
+    top: 15px;
+    transform: rotate(-35deg);
 }
 
-.leaf:nth-child(3) {
+.olive-leaf:nth-child(3) {
     right: 40px;
-    transform: rotate(15deg) scaleX(-1);
+    top: 15px;
+    transform: rotate(35deg);
 }
 
-.leaf:nth-child(4) {
-    right: 0;
-    transform: rotate(30deg) scaleX(-1);
+.olive-leaf:nth-child(4) {
+    left: 50px;
+    top: 30px;
+    transform: rotate(-25deg);
+}
+
+.olive-leaf:nth-child(5) {
+    right: 50px;
+    top: 30px;
+    transform: rotate(25deg);
+}
+
+.olive-leaf:nth-child(6) {
+    left: 60px;
+    top: 45px;
+    transform: rotate(-20deg);
+}
+
+.olive-leaf:nth-child(7) {
+    right: 60px;
+    top: 45px;
+    transform: rotate(20deg);
+}
+
+.olive {
+    position: absolute;
+    width: 6px;
+    height: 8px;
+    background: radial-gradient(circle, #3d3d5c 0%, #2a2a3f 100%);
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+.olive:nth-child(8) {
+    left: 35px;
+    top: 20px;
+}
+
+.olive:nth-child(9) {
+    right: 35px;
+    top: 35px;
 }
 
 .fern {
