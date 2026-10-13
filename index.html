@@ -4,208 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>רויטל ושי - החתונה</title>
+    <meta name="description" content="Revital and Shay are getting married - 28.10.2026, אולמי &quot;לבן&quot;">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&family=Heebo:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="stars" id="stars"></div>
-    <div class="blessings-container" id="blessingsContainer"></div>
+    <main class="card">
+        <!-- Monogram -->
+        <svg class="monogram" viewBox="0 0 200 240" aria-label="RS">
+            <g fill="none" stroke="#1d1d1d" stroke-linecap="round">
+                <!-- Crown ornament -->
+                <path d="M100 8 c-4 6 -4 12 0 18 c4 -6 4 -12 0 -18z" fill="#1d1d1d" stroke-width="0.8"/>
+                <path d="M100 26 c-8 -8 -18 -6 -20 2 c6 -4 12 -3 16 2" stroke-width="1.6"/>
+                <path d="M100 26 c8 -8 18 -6 20 2 c-6 -4 -12 -3 -16 2" stroke-width="1.6"/>
+                <path d="M84 30 c-10 -4 -20 2 -18 10 c2 -6 10 -9 16 -5" stroke-width="1.2"/>
+                <path d="M116 30 c10 -4 20 2 18 10 c-2 -6 -10 -9 -16 -5" stroke-width="1.2"/>
+                <circle cx="100" cy="32" r="2.4" fill="#1d1d1d"/>
 
-    <div class="container">
-        <div class="header">
-            <div class="logo-frame">
-                <div class="logo-content">
-                    <div class="initials">R & S</div>
-                    <div class="names">רויטל  כהן</div>
-                    <div class="names">שי מגרלישווילי</div>
-                    <div class="date">28.10.2026
-                    </div>
+                <!-- Oval frame -->
+                <ellipse cx="100" cy="122" rx="66" ry="86" stroke-width="2.4"/>
+                <ellipse cx="100" cy="122" rx="60" ry="80" stroke-width="0.9"/>
+
+                <!-- Side scrolls -->
+                <path d="M34 92 c-14 -6 -20 8 -12 14 c6 4 12 -2 8 -6" stroke-width="1.4"/>
+                <path d="M166 92 c14 -6 20 8 12 14 c-6 4 -12 -2 -8 -6" stroke-width="1.4"/>
+                <path d="M32 122 c-12 0 -14 12 -6 14 c6 1 8 -6 3 -7" stroke-width="1.2"/>
+                <path d="M168 122 c12 0 14 12 6 14 c-6 1 -8 -6 -3 -7" stroke-width="1.2"/>
+                <path d="M36 154 c-14 6 -10 20 -2 16 c6 -3 4 -9 -1 -8" stroke-width="1.4"/>
+                <path d="M164 154 c14 6 10 20 2 16 c-6 -3 -4 -9 1 -8" stroke-width="1.4"/>
+                <path d="M46 62 c-10 -10 -22 -2 -16 6 c4 5 10 1 8 -3" stroke-width="1.2"/>
+                <path d="M154 62 c10 -10 22 -2 16 6 c-4 5 -10 1 -8 -3" stroke-width="1.2"/>
+                <path d="M50 186 c-10 10 0 20 6 12 c3 -5 -2 -9 -5 -6" stroke-width="1.2"/>
+                <path d="M150 186 c10 10 0 20 -6 12 c-3 -5 2 -9 5 -6" stroke-width="1.2"/>
+
+                <!-- Bottom ornament -->
+                <path d="M100 208 c-6 4 -14 4 -20 0 c4 8 14 10 20 4 c6 6 16 4 20 -4 c-6 4 -14 4 -20 0z" fill="#1d1d1d" stroke-width="0.6"/>
+                <path d="M100 214 c-4 6 -4 12 0 18 c4 -6 4 -12 0 -18z" fill="#1d1d1d" stroke-width="0.6"/>
+            </g>
+            <text x="86" y="138" text-anchor="middle" class="mono-letter">R</text>
+            <text x="114" y="158" text-anchor="middle" class="mono-letter">S</text>
+        </svg>
+
+        <h1 class="names" lang="en" dir="ltr">REVITAL <span class="and">and</span> SHAY</h1>
+        <p class="subtitle" lang="en" dir="ltr">are getting married</p>
+
+        <p class="date">28.10.2026</p>
+        <p class="venue">אולמי "לבן"</p>
+
+        <div class="actions">
+            <a class="btn btn-pill"
+               href="https://ul.waze.com/ul?venue_id=23003464.229838032.16056&overview=yes&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location"
+               target="_blank" rel="noopener">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M21 3 3 10.5l7.5 3L13.5 21 21 3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                </svg>
+                <span>ניווט לאולמי "לבן"</span>
+            </a>
+
+            <section class="gift-box">
+                <h2>למתנה באמצעות</h2>
+                <div class="gift-options">
+                    <a class="gift-btn" href="https://bit.ly/4iPNeDn" target="_blank" rel="noopener" aria-label="אשראי">
+                        <svg class="card-icon" viewBox="0 0 40 30" aria-hidden="true">
+                            <rect x="2" y="3" width="36" height="24" rx="4" fill="none" stroke="currentColor" stroke-width="2.4"/>
+                            <rect x="2" y="9" width="36" height="5" fill="currentColor"/>
+                            <rect x="7" y="19" width="10" height="3" rx="1" fill="currentColor"/>
+                        </svg>
+                        <span class="gift-label">אשראי</span>
+                    </a>
+
+                    <a class="gift-btn" href="https://www.bitpay.co.il/app/share-info?i=sO_Gf2u7&j=true" target="_blank" rel="noopener" aria-label="bit">
+                        <span class="brand" dir="ltr">
+                            <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+                                <circle cx="16" cy="16" r="13.5" fill="none" stroke="currentColor" stroke-width="3"/>
+                                <path d="M12 8v15" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
+                                <circle cx="16.5" cy="18.5" r="4.4" fill="none" stroke="currentColor" stroke-width="3.2"/>
+                            </svg>
+                            <span class="brand-text bit-text">bit</span>
+                        </span>
+                    </a>
+
+                    <a class="gift-btn" href="https://links.payboxapp.com/RrI1Lmdo96b" target="_blank" rel="noopener" aria-label="paybox">
+                        <span class="brand" dir="ltr">
+                            <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+                                <circle cx="16" cy="16" r="15" fill="currentColor"/>
+                                <circle cx="17.5" cy="13.5" r="5.2" fill="none" stroke="#fff" stroke-width="3"/>
+                                <path d="M12.3 13.5v11" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+                            </svg>
+                            <span class="brand-text">paybox</span>
+                        </span>
+                    </a>
                 </div>
-                <div class="decorative-element">
-                    <div class="leaf"></div>
-                    <div class="leaf"></div>
-                    <div class="leaf"></div>
-                    <div class="leaf"></div>
-                    <div class="fern"></div>
-                </div>
-            </div>
+            </section>
+
+            <a class="btn btn-pill" href="https://lavaneruim.co.il/" target="_blank" rel="noopener">
+                <span>לאתר האולם</span>
+            </a>
         </div>
-
-        <div class="countdown">
-            <h2>⏰ הזמן עובר מהר!</h2>
-            <div class="countdown-timer" id="countdown">
-                <div class="time-unit">
-                    <div class="time-value" id="days">00</div>
-                    <div class="time-label">ימים</div>
-                </div>
-                <div class="time-unit">
-                    <div class="time-value" id="hours">00</div>
-                    <div class="time-label">שעות</div>
-                </div>
-                <div class="time-unit">
-                    <div class="time-value" id="minutes">00</div>
-                    <div class="time-label">דקות</div>
-                </div>
-                <div class="time-unit">
-                    <div class="time-value" id="seconds">00</div>
-                    <div class="time-label">שניות</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="button-group">
-            <button class="btn btn-blessing" onclick="openModal('blessing')">
-                <span>💝 שלחו לנו ברכה ומשאלת לב</span>
-            </button>
-
-            <button class="btn btn-primary" onclick="openModal('rsvp')">
-                <span>💌 אישור הגעה</span>
-            </button>
-
-            <button class="btn btn-secondary" onclick="openModal('gift')">
-                <span>🎁 מתנה באמצעות PAYBOX</span>
-            </button>
-
-            <button class="btn btn-gift" onclick="openModal('location')">
-                <span>📍 מיקום האירוע</span>
-            </button>
-
-            <button class="btn btn-photo" onclick="openModal('photos')">
-                <span>📸 העלאת תמונה או סרטון</span>
-            </button>
-        </div>
-
-        <div class="footer">
-            <p>💝 מחכים לחגוג איתכם את היום המיוחד 💝</p>
-            <p><a href="#" onclick="openModal('contact')">אנחנו כאן לכל שאלה, צרו קשר.</a></p>
-            <p><a href="https://www.instagram.com/barpopko/">עוצב על ידי בר פופקו</a></p>
-        </div>
-    </div>
-
-    <!-- Blessing Modal -->
-    <div id="blessingModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('blessing')">&times;</span>
-            <div class="modal-icon">💝</div>
-            <h2>שלחו לנו ברכה ומשאלת לב</h2>
-            <p>אנחנו נשמח לקרוא את הברכות והמשאלות שלכם!</p>
-
-            <form class="blessing-form" onsubmit="submitBlessing(event)">
-                <div class="form-group">
-                    <label for="name">שם מלא:</label>
-                    <input type="text" id="name" name="name" required placeholder="הכניסו את שמכם">
-                </div>
-
-                <div class="form-group">
-                    <label for="blessing">ברכה / משאלת לב:</label>
-                    <textarea id="blessing" name="blessing" required placeholder="כתבו לנו ברכה חמה מהלב... ❤️"></textarea>
-                </div>
-
-                <button type="submit" class="submit-btn">📨 שלח ברכה</button>
-            </form>
-
-            <div class="success-message" id="successMessage">
-                ✅ הברכה נשלחה בהצלחה! תודה רבה! 💝
-            </div>
-
-            <div class="blessing-stats">
-                <p>עד כה התקבלו:</p>
-                <p><strong id="blessingsCount">0</strong> ברכות חמות 🎉</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Other Modals -->
-    <div id="rsvpModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('rsvp')">&times;</span>
-            <div class="modal-icon">💌</div>
-            <h2>אישור הגעה</h2>
-            <p>נשמח לראות אתכם ביום המיוחד שלנו!</p>
-            <p>אנא אשרו הגעתכם דרך הטלפון:<br><strong>050-677-1494</strong></p>
-            <p>או במייל:<br><strong>ravircohen95@gmail.com</strong></p>
-        </div>
-    </div>
-
-    <div id="giftModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('gift')">&times;</span>
-            <div class="modal-icon">🎁</div>
-            <h2>מתנה כספית</h2>
-            <p>אם תרצו לחלוק בשמחתנו במתנה כספית,</p>
-            <p>ניתן להעביר באמצעות PAYBOX:</p>
-            <p><strong>קישור: paybox.co.il/wedding</strong></p>
-            <p>או לחשבון הבנק:<br>בנק: 1X סניף: 3XX חשבון: XXXX1</p>
-        </div>
-    </div>
-
-    <div id="locationModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('location')">&times;</span>
-            <div class="modal-icon">📍</div>
-            <h2>מיקום האירוע</h2>
-            <p><strong>אולם אירועים "לבן"</strong></p>
-            <p>רחוב התעשייה 26, קרית אתא</p>
-            <p>יום רביעי, 28 באוקטובר 2026</p>
-            <p>שעה: 19:00</p>
-            <p><a href="https://ul.waze.com/ul?venue_id=23003464.229838032.16056&overview=yes&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location" target="_blank" style="color: #ffd700;">פתח ב-Waze</a> | <a href="https://share.google/xr0xGrs7CmLlirOBo" target="_blank" style="color: #ffd700;">פתח ב-Google Maps</a></p>
-        </div>
-    </div>
-
-    <div id="photosModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('photos')">&times;</span>
-            <div class="modal-icon">📸</div>
-            <h2>העלאת תמונות וסרטונים</h2>
-            <p>שתפו אותנו ברגעים המיוחדים!</p>
-            <p>העלו תמונות וסרטונים מהאירוע:</p>
-            <p><strong>WhatsApp: 050-677-1494</strong></p>
-            <p>או במייל:<br><strong>ravircohen95@gmail.com</strong></p>
-            <p>תודה שאתם חלק מהשמחה! 💝</p>
-        </div>
-    </div>
-
-    <div id="contactModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('contact')">&times;</span>
-            <div class="modal-icon">💬</div>
-            <h2>יצירת קשר</h2>
-            <p>נשמח לענות על כל שאלה!</p>
-            <p><a href="https://api.whatsapp.com/send?phone=972546842506&text=%D7%94%D7%99%D7%99%20%D7%A8%D7%95%D7%99%D7%98%D7%9C%2C%D7%A8%D7%A6%D7%99%D7%AA%D7%99%20%D7%9C%D7%A9%D7%90%D7%95%D7%9C" target="_blank" style="color: #ffd700; text-decoration: none;"><strong>רויטל:</strong> 054-684-2506</a></p>
-            <p><a href="https://api.whatsapp.com/send?phone=972506771494&text=%D7%94%D7%99%D7%99%20%D7%A9%D7%99%2C%D7%A8%D7%A6%D7%99%D7%AA%D7%99%20%D7%9C%D7%A9%D7%90%D7%95%D7%9C" target="_blank" style="color: #ffd700; text-decoration: none;"><strong>שי:</strong> 050-677-1494</a></p>
-            <p>או במייל:<br><strong>ravircohen95@gmail.com</strong></p>
-        </div>
-    </div>
-
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
-
-    <!-- Firebase Configuration (INLINE FOR GITHUB PAGES) -->
-    <script>
-        // Firebase configuration embedded for GitHub Pages deployment
-        const firebaseConfig = {
-            apiKey: "AIzaSyBGLXEcHI28zo2OpR0c2uDC9rMbH5SDyWc",
-            authDomain: "weddings1-37107.firebaseapp.com",
-            databaseURL: "https://weddings1-37107-default-rtdb.firebaseio.com",
-            projectId: "weddings1-37107",
-            storageBucket: "weddings1-37107.firebasestorage.app",
-            messagingSenderId: "345829791855",
-            appId: "1:345829791855:web:aed4abe05a109ab363959a",
-            measurementId: "G-CZDC6ZKXV6"
-        };
-    </script>
-
-    <!-- Custom JavaScript -->
-    <script src="script.js"></script>
-
-    <script>
-        // Ensure Firebase is initialized after everything loads
-        window.addEventListener('load', function() {
-            if (!firebaseInitialized && typeof initializeFirebase === 'function') {
-                console.log('Retrying Firebase initialization...');
-                initializeFirebase();
-            }
-        });
-    </script>
+    </main>
 </body>
 </html>
