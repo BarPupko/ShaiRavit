@@ -21,8 +21,8 @@
         <p class="venue">אולמי "לבן"</p>
 
         <div class="actions">
-            <a class="btn btn-pill"
-               href="https://waze.com/ul?venue_id=23003464.229838032.16056&navigate=yes">
+            <a class="btn btn-pill" id="wazeBtn"
+               href="https://waze.com/ul?ll=32.8019066,35.0737602&navigate=yes">
                 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M21 3 3 10.5l7.5 3L13.5 21 21 3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
                 </svg>
@@ -56,5 +56,37 @@
             עוצב על ידי <a href="https://barpopko.com/systems/" target="_blank" rel="noopener">בר פופקו</a>
         </footer>
     </main>
+
+    <script>
+        // Open the Waze app directly; if it isn't installed, send the user to the store.
+        (function () {
+            var LL = '32.8019066,35.0737602';
+            var PLAY_STORE = 'https://play.google.com/store/apps/details?id=com.waze';
+            var APP_STORE = 'https://apps.apple.com/app/id323229106';
+            var ua = navigator.userAgent;
+            var isAndroid = /Android/i.test(ua);
+            var isIOS = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+            document.getElementById('wazeBtn').addEventListener('click', function (e) {
+                if (isAndroid) {
+                    e.preventDefault();
+                    // Android intent: opens Waze, or the Play Store if it's missing
+                    window.location.href = 'intent://?ll=' + LL + '&navigate=yes#Intent;scheme=waze;package=com.waze;' +
+                        'S.browser_fallback_url=' + encodeURIComponent(PLAY_STORE) + ';end';
+                } else if (isIOS) {
+                    e.preventDefault();
+                    var start = Date.now();
+                    window.location.href = 'waze://?ll=' + LL + '&navigate=yes';
+                    // If the page is still visible, the app didn't open - go to the App Store
+                    setTimeout(function () {
+                        if (!document.hidden && Date.now() - start < 2500) {
+                            window.location.href = APP_STORE;
+                        }
+                    }, 1500);
+                }
+                // Desktop: follow the normal Waze web link
+            });
+        })();
+    </script>
 </body>
 </html>
