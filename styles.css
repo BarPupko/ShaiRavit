@@ -53,16 +53,11 @@ body {
 
 /* Monogram */
 .monogram {
-    width: 130px;
-    height: auto;
-    margin-bottom: 26px;
-}
-
-.mono-letter {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 78px;
-    font-weight: 400;
-    fill: var(--ink);
+    /* Source PNG is 1920x1080 with wide transparent sides - crop to the artwork */
+    width: 140px;
+    aspect-ratio: 860 / 1080;
+    object-fit: cover;
+    margin-bottom: 24px;
 }
 
 /* Names */
@@ -187,7 +182,8 @@ body {
 
 .card-icon {
     width: 40px;
-    height: 30px;
+    height: 40px;
+    object-fit: contain;
 }
 
 .gift-label {
@@ -196,29 +192,20 @@ body {
     line-height: 1.2;
 }
 
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 4px;
+.brand-logo {
+    max-width: 82%;
+    max-height: 34px;
+    object-fit: contain;
 }
 
-.brand-mark {
-    width: 22px;
-    height: 22px;
-    flex-shrink: 0;
+.paybox-logo {
+    max-width: 92%;
+    max-height: none;
 }
 
-.brand-text {
-    font-family: 'Heebo', sans-serif;
-    font-weight: 600;
-    font-size: clamp(14px, 4.1vw, 21px);
-    letter-spacing: -0.01em;
-}
-
-.bit-text {
-    font-weight: 700;
-    font-size: clamp(24px, 6.6vw, 30px);
-    letter-spacing: -0.02em;
+.bit-logo {
+    max-height: 48px;
+    border-radius: 10px;
 }
 
 @media (max-width: 360px) {
@@ -230,8 +217,19 @@ body {
         gap: 6px;
     }
 
-    .brand-mark {
-        width: 20px;
-        height: 20px;
-    }
+}
+
+/* Designer credit */
+.credit {
+    margin-top: auto;
+    padding-top: 22px;
+    font-size: 14px;
+    color: #555;
+}
+
+.credit a {
+    color: var(--ink);
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 3px;
 }
